@@ -8,6 +8,7 @@ import AssignmentRoutes from "./Kambaz/Assignments/routes.js";
 import EnrollmentRoutes from "./Kambaz/Enrollments/routes.js"; 
 import session from "express-session"; 
 import "dotenv/config"; 
+import Hello from "./Hello.js" 
 
 const app = express(); 
 const PORT = process.env.PORT || 4000;
@@ -32,6 +33,7 @@ if (process.env.NODE_ENV !== "development") {
 } 
 app.use(session(sessionOptions)); 
 app.use(express.json()); 
+Hello(app);
 UserRoutes(app); 
 CourseRoutes(app); 
 ModuleRoutes(app); 
