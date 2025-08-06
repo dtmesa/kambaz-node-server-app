@@ -9,7 +9,7 @@ export default function UserRoutes(app) {
     enrollmentsDao.enrollUserInCourse(currentUser._id, newCourse._id); 
     res.json(newCourse); 
   }; 
-  app.post("api/users/current/courses", createCourse); 
+  app.post("/api/users/current/courses", createCourse); 
 
   const findCoursesForEnrolledUser = (req, res) => { 
     let { userId } = req.params; 
@@ -24,7 +24,7 @@ export default function UserRoutes(app) {
     const courses = courseDao.findCoursesForEnrolledUser(userId); 
     res.json(courses); 
   }; 
-  app.get("api/users/:userId/courses", findCoursesForEnrolledUser); 
+  app.get("/api/users/:userId/courses", findCoursesForEnrolledUser); 
 
   const createUser = (req, res) => { }; 
   const deleteUser = (req, res) => { }; 
@@ -71,13 +71,13 @@ export default function UserRoutes(app) {
     } 
     res.json(currentUser); 
   }; 
-  app.post("api/users", createUser); 
-  app.get("api/users", findAllUsers); 
-  app.get("api/users/:userId", findUserById); 
-  app.put("api/users/:userId", updateUser); 
-  app.delete("api/users/:userId", deleteUser); 
-  app.post("api/users/signup", signup); 
-  app.post("api/users/signin", signin); 
-  app.post("api/users/signout", signout); 
-  app.post("api/users/profile", profile); 
+  app.post("/api/users", createUser); 
+  app.get("/api/users", findAllUsers); 
+  app.get("/api/users/:userId", findUserById); 
+  app.put("/api/users/:userId", updateUser); 
+  app.delete("/api/users/:userId", deleteUser); 
+  app.post("/api/users/signup", signup); 
+  app.post("/api/users/signin", signin); 
+  app.post("/api/users/signout", signout); 
+  app.post("/api/users/profile", profile); 
 } 
