@@ -10,6 +10,7 @@ import session from "express-session";
 import "dotenv/config"; 
 
 const app = express(); 
+const PORT = process.env.PORT || 4000;
 app.use( 
  cors({ 
    credentials: true, 
@@ -37,4 +38,6 @@ ModuleRoutes(app);
 AssignmentRoutes(app);
 EnrollmentRoutes(app);
 Lab5(app);
-app.listen(4000); 
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
