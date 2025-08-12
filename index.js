@@ -8,8 +8,13 @@ import AssignmentRoutes from "./Kambaz/Assignments/routes.js";
 import EnrollmentRoutes from "./Kambaz/Enrollments/routes.js"; 
 import session from "express-session"; 
 import "dotenv/config"; 
+import Hello from "./Hello.js";
+import mongoose from "mongoose";
 
 const app = express(); 
+const PORT = process.env.PORT;
+const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz" 
+mongoose.connect(CONNECTION_STRING); 
 app.use( 
  cors({ 
    credentials: true, 
@@ -31,10 +36,11 @@ if (process.env.NODE_ENV !== "development") {
 } 
 app.use(session(sessionOptions)); 
 app.use(express.json()); 
+Hello(app);
 UserRoutes(app); 
 CourseRoutes(app); 
 ModuleRoutes(app); 
 AssignmentRoutes(app);
 EnrollmentRoutes(app);
 Lab5(app);
-app.listen(4000); 
+app.listen(process.env.PORT || 4000); 
