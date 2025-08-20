@@ -9,7 +9,7 @@ const submissionSchema = new mongoose.Schema(
     attempt_number: { type: Number, default: 1 },
     status: {
       type: String,
-      enum: ['in_progress', 'submitted', 'auto_submitted'], // auto_submitted for time limit
+      enum: ['in_progress', 'submitted', 'auto_submitted'],
       default: 'in_progress'
     },
     

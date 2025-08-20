@@ -4,7 +4,7 @@ const quizSchema = new mongoose.Schema(
  { 
     _id: String, 
     course: { type: String, ref: "CourseModel" }, 
-    user:   { type: String, ref: "UserModel"   }, 
+    submissions :   { type: String, ref: "SubmissionModel"   }, 
     questions: [{ type: String, ref: "QuestionModel" }],
 
     title: String, 
@@ -15,8 +15,6 @@ const quizSchema = new mongoose.Schema(
       enum: ['graded_quiz', 'practice_quiz', 'graded_survey', 'ungraded_survey'],
       default: 'graded_quiz'
     },
-
-    points: { type: Number, default: 0 },
 
     assignment_group: {
       type: String,
@@ -29,6 +27,7 @@ const quizSchema = new mongoose.Schema(
     shuffle_answers: { type: Boolean, default: true },
     time_limit: { type: Number, default: 20 },
     multiple_attempts: { type: Boolean, default: false },
+    number_of_attempts: { type: Number, default: 1 },
 
    show_correct_answers: {
       type: String,
